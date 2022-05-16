@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  freudeman-blog:
+    container_name: freudeman-blog
+    image: freudeman-blog
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 7878:7878
