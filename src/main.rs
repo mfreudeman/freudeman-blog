@@ -2,12 +2,12 @@ use std::{path::{Path, PathBuf}};
 use rocket::fs::NamedFile;
 
 extern crate pretty_env_logger;
-#[macro_use] extern crate log;
+//#[macro_use] extern crate log;
 #[macro_use] extern crate rocket;
 
 #[get("/")]
-fn index() -> &'static str {
-    "Hello World"
+async fn index() -> Option<NamedFile> {
+    NamedFile::open(Path::new("public_html/index.html").to_path_buf()).await.ok()
 }
 
 #[get("/page/<name>")]
